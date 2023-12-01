@@ -258,7 +258,7 @@ Class Master extends DBConnection {
 		extract($_POST);
 		$data = "";
 		foreach($_POST as $k =>$v){
-			if(!in_array($k,array('id')) && !is_array($_POST[$k])){
+			if(!in_array($k,array('id', 'bo_code', 'supplier_id', 'po_id')) && !is_array($_POST[$k])){
 				if(!is_numeric($v))
 				$v= $this->conn->real_escape_string($v);
 				if(!empty($data)) $data .=", ";
@@ -670,6 +670,7 @@ Class Master extends DBConnection {
 	}
 }
 
+
 $Master = new Master();
 $action = !isset($_GET['f']) ? 'none' : strtolower($_GET['f']);
 $sysset = new SystemSettings();
@@ -723,31 +724,3 @@ switch ($action) {
 		// echo $sysset->index();
 		break;
 }
-/* back ordre table구조
-
-  `id` int(30) NOT NULL,
-  `receiving_id` int(30) NOT NULL,
-  `po_id` int(30) NOT NULL,
-  `bo_code` varchar(50) NOT NULL,
-  `supplier_id` int(30) NOT NULL,
-  `amount` float NOT NULL,
-  `discount_perc` float NOT NULL DEFAULT 0,
-  `discount` float NOT NULL DEFAULT 0,
-  `tax_perc` float NOT NULL DEFAULT 0,
-  `tax` float NOT NULL DEFAULT 0,
-  `remarks` text DEFAULT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0 = pending, 1 = partially received, 2 =received',
-  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
-  `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-
-
-
-
-
-
-
-
-
-
-
-  */

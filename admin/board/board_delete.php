@@ -1,10 +1,10 @@
 <?php
 	$num=$_GET["num"];
-	$page=$_GET["page"];
 
-	$con=mysqli_connect("localhost", "root", " ", "sms_db");
+
+	$con=mysqli_connect("localhost", "root", "", "sms_db");
 	$sql="select * from board where num=$num";
-	$result=mysqli_querey($con, $sql);
+	$result=mysqli_query($con, $sql);
 	$row=mysqli_fetch_array($result);
 
 	$sql="delete from board where num=$num";
@@ -13,7 +13,7 @@
 
 	echo"
 	<script>
-	location.href='board_list.php?page=$page';
+	location.href='?page=board';
 	</script>
 	";
 ?>
