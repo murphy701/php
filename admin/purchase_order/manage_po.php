@@ -346,7 +346,7 @@ if(isset($_GET['id'])){
             })
         }
     })
-$('#po-form').on('submit', function (event) {
+/*$('#po-form').on('submit', function (event) {
     event.preventDefault();
 
     $(this).find(':input').each(function () {
@@ -355,7 +355,7 @@ $('#po-form').on('submit', function (event) {
         alert('Form Element Name: ' + elementName + '\nForm Element Value: ' + elementValue);
         // Log or alert the name and value of each form element
 
- }); });
+ }); });*/
     function rem(_this){
         _this.closest('tr').remove()
         calc()
